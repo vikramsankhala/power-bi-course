@@ -376,6 +376,31 @@
       color: var(--text-muted);
     }
 
+    /* Project / Tutorial / Capstone boxes */
+    .activity-box {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .activity-box.project { background: rgba(45, 74, 62, 0.3); border-left-color: #6ee7b7; }
+    .activity-box.tutorial { background: rgba(30, 58, 95, 0.3); border-left-color: #93c5fd; }
+    .activity-box.capstone { background: rgba(76, 29, 149, 0.2); border-left-color: #c4b5fd; }
+
+    .activity-box h4 {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .activity-box p, .activity-box li {
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
     /* Footer */
     footer {
       padding: 48px 0;
@@ -412,7 +437,7 @@
       <span class="logo">Power BI Course</span>
       <ul class="nav-links">
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#modules">Modules</a></li>
+        <li><a href="#modules">Modules & Projects</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="#visualizations">Visualizations</a></li>
         <li><a href="#assessments">Assessments</a></li>
@@ -510,6 +535,14 @@
             <li>45–75 min: Hands-on — "What decision would you take with this table?"</li>
             <li>75–120 min: Group exercise — "Pipeline sketch" (source → staging → warehouse → Power BI)</li>
           </ul>
+          <div class="activity-box project">
+            <h4>Project</h4>
+            <p><strong>Pipeline Sketch for Retail Chain:</strong> In groups, sketch the end-to-end data flow for a retail chain: source systems (POS, inventory) → staging → data warehouse/lake → Power BI dashboard. Present your sketch and explain one business decision each stage enables.</p>
+          </div>
+          <div class="activity-box tutorial">
+            <h4>Tutorial</h4>
+            <p><strong>SQL Output Interpretation:</strong> Work through 3–4 pre-prepared SQL query outputs. For each table, answer: "What decision would you take with this data?" Document your reasoning in a one-page summary.</p>
+          </div>
         </div>
         <div class="card">
           <h3><span class="num">1.2</span> BI Tools & Storytelling (2h)</h3>
@@ -524,66 +557,147 @@
             <li>45–75 min: Critique dashboards (chartjunk, color, chart choice)</li>
             <li>75–120 min: Case mini-debate — Bank, Retail, Startup SaaS scenarios</li>
           </ul>
+          <div class="activity-box project">
+            <h4>Project</h4>
+            <p><strong>Tool Choice Justification:</strong> Given scenario packs (Bank, Retail, Startup SaaS), each group selects Power BI, Tableau, or both. Produce a 1-page justification document with criteria (cost, integration, user base, learning curve) and present in a 5-minute mini-debate.</p>
+          </div>
+          <div class="activity-box tutorial">
+            <h4>Tutorial</h4>
+            <p><strong>Dashboard Critique:</strong> Given a cluttered sales dashboard screenshot, mark and label 3 design issues (chartjunk, poor color use, wrong chart choice) and propose specific improvements. Submit annotated screenshot + improvement recommendations.</p>
+          </div>
         </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px; border-left: 4px solid #c4b5fd;">
+        <h3>Module 1 Capstone Project</h3>
+        <p><strong>BI Foundation & Tool Selection Report:</strong> Synthesize Sessions 1.1 and 1.2. Produce a 2–3 page executive brief that: (1) explains your firm's hypothetical data pipeline (source → warehouse → BI) for a chosen industry, (2) recommends Power BI vs Tableau (or both) with justification, and (3) includes a one-page dashboard critique with before/after improvement suggestions. Deliverable: PDF report + 5-minute presentation.</p>
       </div>
 
       <h2 class="section-title" style="margin-top: 60px;">Module 2 — Power BI Hands-On</h2>
       <p class="section-subtitle">10 hours total • Five 2-hour sessions</p>
 
-      <div class="accordion">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <span>Session 2.1 — Install & First Report (2h)</span>
-          <span>▼</span>
+      <div class="card">
+        <h3><span class="num">2.1</span> Install & First Report (2h)</h3>
+        <p><strong>Learning outcomes:</strong></p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Install Power BI Desktop and open a sample report.</p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Connect to Excel or CSV and load data into Power BI.</p>
+        <p><span class="bloom-badge bloom-understand">Understand</span> Describe Report, Data, and Model views and their purposes.</p>
+        <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+        <ul>
+          <li>0–20 min: Install and launch — instructor walkthrough (home screen, Get Data)</li>
+          <li>20–60 min: Hands-on — connect to Retail Analysis or Store Sales sample; build bar chart (Revenue by Region) and card (Total Revenue)</li>
+          <li>60–90 min: Guided activity — "CEO question": Which region contributes most to revenue and how much?</li>
+          <li>90–120 min: Quick quiz & reflection</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>Assessment:</strong> Create report with at least one bar chart and one card visual; save PBIX. Short answer: What is each of Report view, Data view, Model view?</p>
+        <div class="activity-box project">
+          <h4>Project</h4>
+          <p><strong>First Revenue Dashboard:</strong> Connect to the Retail Analysis sample. Build a one-page report with: (1) Total Revenue card, (2) Revenue by Region bar chart, (3) Revenue by Product Category. Answer the CEO question in writing: "Which region leads and by how much?" Submit PBIX + one-paragraph insight.</p>
         </div>
-        <div class="accordion-content">
-          <p><strong>Outcomes:</strong> Install Power BI, connect to Excel/CSV, build bar chart + card. Describe Report, Data, Model views.</p>
-          <p><strong>Hands-on:</strong> Connect to Retail Analysis sample → Build Revenue by Region bar chart + Total Revenue card → "CEO question" activity.</p>
-        </div>
-      </div>
-
-      <div class="accordion">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <span>Session 2.2 — Transform & Clean Data / Power Query (2h)</span>
-          <span>▼</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Outcomes:</strong> Identify data issues (missing values, wrong types). Apply Power Query transforms (filter, remove columns, change types, split).</p>
-          <p><strong>Hands-on:</strong> Remove irrelevant columns, fix data types, handle blanks, standardize category names. Show Applied Steps with business explanation.</p>
-        </div>
-      </div>
-
-      <div class="accordion">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <span>Session 2.3 — Data Modeling & Relationships (2h)</span>
-          <span>▼</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Outcomes:</strong> Distinguish fact vs dimension tables. Create relationships, validate via visuals. Diagnose modeling issues (duplicate keys).</p>
-          <p><strong>Hands-on:</strong> Star schema with Orders, Customers, Products. Build "Sales by Customer Segment" chart.</p>
+        <div class="activity-box tutorial">
+          <h4>Tutorial</h4>
+          <p><strong>Power BI Desktop Setup:</strong> Follow the Kevin Stratvert 10-min beginner tutorial. Install Power BI Desktop, import a sample dataset, create your first bar chart and card. Document the three main views and when to use each.</p>
         </div>
       </div>
 
-      <div class="accordion">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <span>Session 2.4 — DAX Fundamentals (2h)</span>
-          <span>▼</span>
+      <div class="card">
+        <h3><span class="num">2.2</span> Transform & Clean Data / Power Query (2h)</h3>
+        <p><strong>Learning outcomes:</strong></p>
+        <p><span class="bloom-badge bloom-analyze">Analyze</span> Identify common data issues (missing values, wrong types, unnecessary columns).</p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Apply Power Query transforms: filter, remove columns, change types, split columns.</p>
+        <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+        <ul>
+          <li>0–20 min: Mini-lecture — "Dirty data, bad decisions" + retail case</li>
+          <li>20–30 min: Demo in Power Query using sample Excel</li>
+          <li>30–90 min: Hands-on cleaning — remove irrelevant columns, fix data types, handle blanks, standardize category names</li>
+          <li>90–120 min: Reflection + short quiz</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>Assessment:</strong> Given a dataset with known issues, mark issues and rank top 3 by business risk. Show Applied Steps list and explain each step in business language.</p>
+        <div class="activity-box project">
+          <h4>Project</h4>
+          <p><strong>Data Cleaning Challenge:</strong> Use a provided "dirty" retail CSV (missing IDs, inconsistent region names, wrong date formats). Clean it in Power Query: remove duplicates, fix types, standardize categories. Document each Applied Step with a business rationale. Deliver: cleaned PBIX + step-by-step log.</p>
         </div>
-        <div class="accordion-content">
-          <p><strong>Outcomes:</strong> Recall SUM, AVERAGE, CALCULATE. Create measures (Total Sales, Gross Margin, Revenue per Customer). Explain calculated column vs measure.</p>
-          <p><strong>Hands-on:</strong> Build Total Revenue, Gross Margin, Revenue per Customer. Use in table and chart. Answer "Top 5 customers by revenue?"</p>
+        <div class="activity-box tutorial">
+          <h4>Tutorial</h4>
+          <p><strong>Power Query Essentials:</strong> Work through filter, remove columns, change data type, split column, and replace values. Use Microsoft retail sample. Create a checklist of 5 common data issues and how you fixed them.</p>
         </div>
       </div>
 
-      <div class="accordion">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <span>Session 2.5 — Visual Design, Interactivity & Power BI Service (2h)</span>
-          <span>▼</span>
+      <div class="card">
+        <h3><span class="num">2.3</span> Data Modeling & Relationships (2h)</h3>
+        <p><strong>Learning outcomes:</strong></p>
+        <p><span class="bloom-badge bloom-understand">Understand</span> Distinguish fact vs dimension tables in a star schema.</p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Create relationships between tables and validate via visuals.</p>
+        <p><span class="bloom-badge bloom-analyze">Analyze</span> Diagnose modeling issues (e.g., duplicate keys causing wrong totals).</p>
+        <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+        <ul>
+          <li>0–20 min: Concept lecture — star schema, relationships, cardinality, filter direction</li>
+          <li>20–40 min: Instructor demo — Orders, Customers, Products; create relationships and show impact</li>
+          <li>40–100 min: Hands-on — build star model; produce "Sales by Customer Segment" chart</li>
+          <li>100–120 min: Mini-quiz & Q&A</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>Assessment:</strong> Model must have 1 fact + 2 dimensions with correct one-to-many relationships. Short case: Report shows duplicated sales — identify likely modeling cause.</p>
+        <div class="activity-box project">
+          <h4>Project</h4>
+          <p><strong>Star Schema Build:</strong> Split a retail CSV into Orders (fact), Customers (dimension), Products (dimension). Create relationships in Model view. Build a "Sales by Customer Segment" and "Revenue by Product Category" chart. Validate that totals are correct. Document your model diagram.</p>
         </div>
-        <div class="accordion-content">
-          <p><strong>Outcomes:</strong> Design 1-page dashboard (4+ visuals, slicers). Use cross-filtering, drill-down. Publish to Power BI Service.</p>
-          <p><strong>Hands-on:</strong> KPI cards, trend line, bar chart, slicers. Add interactions. Publish to Service, create workspace, share report.</p>
-          <p><strong>Rubric:</strong> Clarity of KPIs (30%), Visual appropriateness (25%), Interactivity (20%), Storyline (25%).</p>
+        <div class="activity-box tutorial">
+          <h4>Tutorial</h4>
+          <p><strong>Relationships & Filter Context:</strong> Use a multi-table sample. Create relationships, set filter direction. Break a relationship and observe wrong totals; fix and explain. Write a one-page guide: "When to use one-to-many vs many-to-many."</p>
         </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="num">2.4</span> DAX Fundamentals (2h)</h3>
+        <p><strong>Learning outcomes:</strong></p>
+        <p><span class="bloom-badge bloom-remember">Remember</span> Recall core DAX functions: SUM, AVERAGE, CALCULATE.</p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Create measures: Total Sales, Gross Margin, Revenue per Customer.</p>
+        <p><span class="bloom-badge bloom-understand">Understand</span> Interpret calculated column vs measure in business use cases.</p>
+        <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+        <ul>
+          <li>0–20 min: Concept mini-lecture — "Measures = business questions"</li>
+          <li>20–40 min: Demo — create [Total Sales] = SUM(Sales[Sales]); add to visuals</li>
+          <li>40–90 min: Guided DAX exercises — Total Revenue, Gross Margin, Revenue per Customer; use in table and chart</li>
+          <li>90–120 min: Quick quiz + reflection</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>Assessment:</strong> MCQ on what CALCULATE does. Create at least 3 measures; show how they answer "Top 5 customers by revenue?"</p>
+        <div class="activity-box project">
+          <h4>Project</h4>
+          <p><strong>DAX Measures Dashboard:</strong> Build measures: Total Revenue, Gross Margin %, Revenue per Customer, Top 5 Customers by Revenue. Create a table visual and bar chart using these measures. Answer: "Which top 5 customers drive the most revenue, and what is their share of total?"</p>
+        </div>
+        <div class="activity-box tutorial">
+          <h4>Tutorial</h4>
+          <p><strong>DAX Basics:</strong> Write SUM, AVERAGE, CALCULATE with simple filter. Compare a calculated column vs measure for "Revenue per Order." Document when to use each.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="num">2.5</span> Visual Design, Interactivity & Power BI Service (2h)</h3>
+        <p><strong>Learning outcomes:</strong></p>
+        <p><span class="bloom-badge bloom-create">Create</span> Design a 1-page interactive dashboard with 4+ visuals and slicers.</p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Use cross-filtering, drill-down, and simple bookmarks.</p>
+        <p><span class="bloom-badge bloom-apply">Apply</span> Publish report to Power BI Service and share it.</p>
+        <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+        <ul>
+          <li>0–20 min: Design principles for executive dashboards (chart choice, layout, color)</li>
+          <li>20–60 min: Hands-on — KPI cards, trend line by month, bar chart by region/category, slicers</li>
+          <li>60–90 min: Add interactions — drill-down, test slicers, ensure readability</li>
+          <li>90–120 min: Publishing demo — Publish to Service, create workspace, share report</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>Assessment/Rubric:</strong> Clarity of KPIs (30%), Visual appropriateness (25%), Interactivity (20%), Storyline coherence (25%).</p>
+        <div class="activity-box project">
+          <h4>Project</h4>
+          <p><strong>Executive Dashboard:</strong> Build a 1-page dashboard for a Sales Director: KPI cards (Revenue, Margin), trend line by month, bar chart by region, slicers for region and product category. Add cross-filtering and drill-down. Publish to Power BI Service and share with instructor. Present in 3 minutes.</p>
+        </div>
+        <div class="activity-box tutorial">
+          <h4>Tutorial</h4>
+          <p><strong>Dashboard Design & Publishing:</strong> Apply design principles (declutter, hierarchy, color). Configure slicer interactions. Publish to Power BI Service; create a workspace; share report via link. Document sharing options and workspace roles.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px; border-left: 4px solid #c4b5fd;">
+        <h3>Module 2 Capstone Project</h3>
+        <p><strong>Executive Sales Dashboard:</strong> Synthesize all Module 2 skills. Build a manager-ready, one-page Power BI dashboard from a provided retail dataset. Requirements: (1) Clean and model data (star schema), (2) Create 4+ DAX measures, (3) Design 4+ visuals with slicers, (4) Publish to Power BI Service. Deliverable: PBIX + published link + 5-minute presentation defending design choices. Graded on: KPI clarity (30%), Visual appropriateness (25%), Interactivity (20%), Storyline (25%).</p>
       </div>
 
       <div class="card" style="margin-top: 24px;">
@@ -927,20 +1041,6 @@
       }
     });
 
-    function toggleAccordion(header) {
-      const content = header.nextElementSibling;
-      const isOpen = content.style.display === 'block';
-      content.style.display = isOpen ? 'none' : 'block';
-      header.querySelector('span:last-child').textContent = isOpen ? '▼' : '▲';
-    }
-
-    // Open first accordion by default
-    document.querySelectorAll('.accordion-content').forEach((el, i) => {
-      el.style.display = i === 0 ? 'block' : 'none';
-    });
-    document.querySelectorAll('.accordion-header span:last-child').forEach((el, i) => {
-      el.textContent = i === 0 ? '▲' : '▼';
-    });
   </script>
 </body>
 </html>
