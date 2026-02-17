@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikram Power BI Course | MBA Bootcamp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-dark: #0f1419;
+      --bg-card: #1a2332;
+      --bg-elevated: #243447;
+      --accent: #f2b94e;
+      --accent-dim: #e6a229;
+      --accent-muted: rgba(242, 185, 78, 0.15);
+      --text: #e7e9ea;
+      --text-muted: #8b98a5;
+      --success: #00d26a;
+      --border: #2f3d4d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-muted), transparent),
+        linear-gradient(180deg, var(--bg-dark) 0%, #0a0e12 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 20, 25, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 100px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent-muted);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    /* Section */
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 36px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent-dim);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      background: var(--accent-muted);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .card p, .card li {
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      margin-left: 20px;
+      margin-top: 12px;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* Chart containers */
+    .chart-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin: 40px 0;
+    }
+
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      height: 320px;
+    }
+
+    .chart-card h4 {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .chart-card canvas {
+      max-height: 240px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      border-left: 2px solid var(--border);
+      margin-left: 8px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--bg-dark);
+    }
+
+    .timeline-item h4 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .timeline-item .meta {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg-elevated);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(242, 185, 78, 0.05);
+    }
+
+    /* Bloom badges */
+    .bloom-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 2px 4px 2px 0;
+    }
+
+    .bloom-remember { background: #2d4a3e; color: #6ee7b7; }
+    .bloom-understand { background: #1e3a5f; color: #93c5fd; }
+    .bloom-apply { background: #4c1d95; color: #c4b5fd; }
+    .bloom-analyze { background: #7c2d12; color: #fcd34d; }
+    .bloom-evaluate { background: #1e293b; color: #f472b6; }
+    .bloom-create { background: #134e4a; color: #5eead4; }
+
+    /* Accordion */
+    .accordion {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .accordion-header {
+      background: var(--bg-card);
+      padding: 18px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .accordion-header:hover {
+      background: var(--bg-elevated);
+    }
+
+    .accordion-content {
+      padding: 24px;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-content ul {
+      margin-left: 20px;
+      margin-top: 12px;
+    }
+
+    .accordion-content li {
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 48px 0 64px;
+      }
+      .chart-row {
+        grid-template-columns: 1fr;
+      }
+      .chart-card {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <span class="logo">Power BI Course</span>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#visualizations">Visualizations</a></li>
+        <li><a href="#assessments">Assessments</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <span class="badge">MBA Bootcamp</span>
+      <h1>Vikram Power BI Course</h1>
+      <p class="subtitle">A 5–6 day intensive program for MBAs: BI vocabulary, data pipelines, and Power BI dashboards for managerial decision-making.</p>
+      <p class="subtitle" style="font-size: 1rem;">No prior BI/SQL required. Focus on interpretation over coding.</p>
+    </div>
+  </header>
+
+  <section id="overview">
+    <div class="container">
+      <h2 class="section-title">Course Overview</h2>
+      <p class="section-subtitle">Format: 5–6 day intensive (6–7 hours/day), mixed concepts + hands-on</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Target Audience</h3>
+          <p>MBAs with basic Excel skills. No prior BI or SQL required. Emphasis on managerial interpretation over heavy coding.</p>
+        </div>
+        <div class="card">
+          <h3>Key Emphasis</h3>
+          <p>Fast ramp-up on BI vocabulary, data pipelines, and visualization literacy. Practical ability to brief stakeholders using Power BI dashboards.</p>
+        </div>
+        <div class="card">
+          <h3>Learning Approach</h3>
+          <p>Hands-on labs, group exercises, case debates, and real retail/sales datasets. Build dashboards that answer C-level questions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visualizations">
+    <div class="container">
+      <h2 class="section-title">Course Visualizations</h2>
+      <p class="section-subtitle">Time allocation, module breakdown, and Bloom's taxonomy distribution</p>
+
+      <div class="chart-row">
+        <div class="chart-card">
+          <h4>Total Hours by Module</h4>
+          <canvas id="moduleHoursChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>Module 1 Session Split</h4>
+          <canvas id="module1Chart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-card">
+          <h4>Module 2 Session Distribution</h4>
+          <canvas id="module2Chart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>Bloom's Taxonomy Coverage</h4>
+          <canvas id="bloomChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-card">
+          <h4>5-Day Bootcamp Schedule</h4>
+          <canvas id="scheduleChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>Assessment Types</h4>
+          <canvas id="assessmentChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modules">
+    <div class="container">
+      <h2 class="section-title">Module 1 — Data & BI Foundations</h2>
+      <p class="section-subtitle">4 hours total • MBA bootcamp</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3><span class="num">1.1</span> Data & BI for Managers (2h)</h3>
+          <p><strong>Learning outcomes:</strong></p>
+          <p><span class="bloom-badge bloom-remember">Remember</span> Define BI, ETL/ELT, data warehouse/lake, KPI.</p>
+          <p><span class="bloom-badge bloom-understand">Understand</span> Explain how data engineering underpins analytics (Netflix/retail).</p>
+          <p><span class="bloom-badge bloom-apply">Apply</span> Interpret SQL query output in business terms.</p>
+          <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+          <ul>
+            <li>0–15 min: Icebreaker & pre-concept quiz (Mentimeter/Kahoot)</li>
+            <li>15–45 min: Mini-lecture — BI, KPIs, ETL vs ELT, data lake vs warehouse</li>
+            <li>45–75 min: Hands-on — "What decision would you take with this table?"</li>
+            <li>75–120 min: Group exercise — "Pipeline sketch" (source → staging → warehouse → Power BI)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">1.2</span> BI Tools & Storytelling (2h)</h3>
+          <p><strong>Learning outcomes:</strong></p>
+          <p><span class="bloom-badge bloom-understand">Understand</span> Distinguish Power BI vs Tableau.</p>
+          <p><span class="bloom-badge bloom-evaluate">Evaluate</span> Choose tool for organizational context.</p>
+          <p><span class="bloom-badge bloom-analyze">Analyze</span> Identify good vs poor visualizations.</p>
+          <p style="margin-top: 16px;"><strong>Outline:</strong></p>
+          <ul>
+            <li>0–20 min: Tool landscape — Power BI vs Tableau</li>
+            <li>20–45 min: Live demo — Power BI beginner tutorial</li>
+            <li>45–75 min: Critique dashboards (chartjunk, color, chart choice)</li>
+            <li>75–120 min: Case mini-debate — Bank, Retail, Startup SaaS scenarios</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="margin-top: 60px;">Module 2 — Power BI Hands-On</h2>
+      <p class="section-subtitle">10 hours total • Five 2-hour sessions</p>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Session 2.1 — Install & First Report (2h)</span>
+          <span>▼</span>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Outcomes:</strong> Install Power BI, connect to Excel/CSV, build bar chart + card. Describe Report, Data, Model views.</p>
+          <p><strong>Hands-on:</strong> Connect to Retail Analysis sample → Build Revenue by Region bar chart + Total Revenue card → "CEO question" activity.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Session 2.2 — Transform & Clean Data / Power Query (2h)</span>
+          <span>▼</span>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Outcomes:</strong> Identify data issues (missing values, wrong types). Apply Power Query transforms (filter, remove columns, change types, split).</p>
+          <p><strong>Hands-on:</strong> Remove irrelevant columns, fix data types, handle blanks, standardize category names. Show Applied Steps with business explanation.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Session 2.3 — Data Modeling & Relationships (2h)</span>
+          <span>▼</span>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Outcomes:</strong> Distinguish fact vs dimension tables. Create relationships, validate via visuals. Diagnose modeling issues (duplicate keys).</p>
+          <p><strong>Hands-on:</strong> Star schema with Orders, Customers, Products. Build "Sales by Customer Segment" chart.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Session 2.4 — DAX Fundamentals (2h)</span>
+          <span>▼</span>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Outcomes:</strong> Recall SUM, AVERAGE, CALCULATE. Create measures (Total Sales, Gross Margin, Revenue per Customer). Explain calculated column vs measure.</p>
+          <p><strong>Hands-on:</strong> Build Total Revenue, Gross Margin, Revenue per Customer. Use in table and chart. Answer "Top 5 customers by revenue?"</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Session 2.5 — Visual Design, Interactivity & Power BI Service (2h)</span>
+          <span>▼</span>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Outcomes:</strong> Design 1-page dashboard (4+ visuals, slicers). Use cross-filtering, drill-down. Publish to Power BI Service.</p>
+          <p><strong>Hands-on:</strong> KPI cards, trend line, bar chart, slicers. Add interactions. Publish to Service, create workspace, share report.</p>
+          <p><strong>Rubric:</strong> Clarity of KPIs (30%), Visual appropriateness (25%), Interactivity (20%), Storyline (25%).</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h3>Recommended Practice Datasets</h3>
+        <ul>
+          <li>Microsoft Power BI built-in samples (Retail / Store Sales, Regional Sales) — PBIX and Excel</li>
+          <li>Retail sales analytics CSV (orders, products, locations, time)</li>
+          <li>Sample sales CSV for performance demos — OrderDate, Region, ProductCategory, Quantity, Revenue</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="container">
+      <h2 class="section-title">5-Day Course Schedule</h2>
+      <p class="section-subtitle">Day × Session × Outcomes × Assessment</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Session</th>
+              <th>Key Outcomes</th>
+              <th>Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Module 1.1 — Data & BI for Managers</td>
+              <td>Define BI, ETL, KPI; explain data engineering; interpret SQL output</td>
+              <td>In-class quiz; pipeline sketch; group explanation</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Module 1.2 — BI Tools & Storytelling</td>
+              <td>Distinguish Power BI vs Tableau; spot design issues</td>
+              <td>Tool choice debate; dashboard critique; written justification</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Module 2.1 — Install & First Report</td>
+              <td>Install Power BI; build visuals; describe 3 views</td>
+              <td>Lab checklist; exit ticket; saved PBIX</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Integration Lab — Quick Insights</td>
+              <td>Answer C-level questions with visuals</td>
+              <td>Screenshot + insight; peer discussion</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Module 2.2 — Transform & Clean Data</td>
+              <td>Identify data issues; apply Power Query transforms</td>
+              <td>Applied Steps rubric; case question</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Module 2.3 — Data Modeling</td>
+              <td>Fact vs dimension; create relationships; diagnose errors</td>
+              <td>Model review; diagnosis question; screenshot</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Mini-Project — Clean & Model</td>
+              <td>Combine cleaning and modeling</td>
+              <td>PBIX submission; 3–5 min presentation</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Module 2.4 — DAX Fundamentals</td>
+              <td>Recall DAX functions; create measures</td>
+              <td>Lab rubric; Google Form quiz</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>DAX Clinic — Business Questions</td>
+              <td>Use measures for managerial questions</td>
+              <td>Case-based Form; spot-check dashboards</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Quiz & Case Discussion</td>
+              <td>Integrate Modules 1–2</td>
+              <td>Formal quiz; group case discussion</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Module 2.5 — Visual Design & Interactivity</td>
+              <td>Design dashboard; add interactions</td>
+              <td>Dashboard rubric; live walk-through</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Power BI Service Lab</td>
+              <td>Publish to Service; sharing concepts</td>
+              <td>Publish check; Google Form</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Team Dashboard Build</td>
+              <td>Synthesize all skills</td>
+              <td>Interim submission; peer feedback</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Recap & Strategy Reflection</td>
+              <td>Connect BI to decision-making</td>
+              <td>Reflection form; 3 takeaways</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Final Dashboard Refinement</td>
+              <td>Improve KPIs, layout, narrative</td>
+              <td>Instructor + peer review</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Final Presentations & Post-Test</td>
+              <td>Present dashboard; defend design</td>
+              <td>Capstone presentation; summative post-test</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="assessments">
+    <div class="container">
+      <h2 class="section-title">Assessments & Question Bank</h2>
+      <p class="section-subtitle">Bloom-aligned quizzes and rubrics</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Remember</h3>
+          <p><strong>Q1:</strong> What does "ETL" stand for? <em>a) Extract, Transform, Load</em></p>
+          <p><strong>Q2:</strong> Define "KPI" in one sentence.</p>
+          <p><strong>Q3:</strong> In Power BI, which view is used to create visuals? <em>Report view</em></p>
+          <p><strong>Q4:</strong> Which is a DAX function? <em>CALCULATE</em></p>
+        </div>
+        <div class="card">
+          <h3>Understand</h3>
+          <p><strong>Q1:</strong> Why do organizations build data warehouses instead of querying transactional systems directly?</p>
+          <p><strong>Q2:</strong> Explain fact vs dimension tables in a star schema.</p>
+          <p><strong>Q3:</strong> Describe the main purpose of Power Query.</p>
+          <p><strong>Q4:</strong> Why is a slicer useful on a dashboard?</p>
+        </div>
+        <div class="card">
+          <h3>Apply</h3>
+          <p><strong>Q1:</strong> For "Which region generated highest revenue?" — best visualization? <em>Bar chart of Revenue by Region</em></p>
+          <p><strong>Q2:</strong> Write a DAX measure for Total Revenue from Sales[Revenue]. <em>= SUM(Sales[Revenue])</em></p>
+          <p><strong>Q3:</strong> Which Power Query actions? Change types, remove duplicates, split columns.</p>
+        </div>
+        <div class="card">
+          <h3>Analyze / Evaluate / Create</h3>
+          <p><strong>Analyze:</strong> List two data modeling issues that could double sales totals.</p>
+          <p><strong>Evaluate:</strong> Microsoft 365 + Azure firm — Power BI or Tableau? Justify in 150 words.</p>
+          <p><strong>Create:</strong> Upload one-page dashboard; state main decision and 3 central KPIs.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h3>Dashboard Rubric (Session 2.5)</h3>
+        <ul>
+          <li><strong>Clarity of key KPIs</strong> — 30%</li>
+          <li><strong>Appropriateness of visuals</strong> — 25%</li>
+          <li><strong>Effective interactivity</strong> — 20%</li>
+          <li><strong>Storyline coherence for executives</strong> — 25%</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Resources & Links</h2>
+      <p class="section-subtitle">Recommended for pre/post work</p>
+      <div class="card">
+        <ul>
+          <li>Power BI "10-min beginner" tutorial — Kevin Stratvert (YouTube)</li>
+          <li>Microsoft Power BI sample datasets — Retail Analysis, Store Sales, Regional Sales</li>
+          <li>Power BI Service documentation — publishing, workspaces, sharing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Vikram Power BI Course — MBA Bootcamp • Converted from course outline document</p>
+      <p style="margin-top: 8px;">Ready for <a href="https://netlify.com" target="_blank" rel="noopener">Netlify</a> deployment</p>
+    </div>
+  </footer>
+
+  <script>
+    Chart.defaults.color = '#8b98a5';
+    Chart.defaults.borderColor = '#2f3d4d';
+    Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+    const accentColors = ['#f2b94e', '#e6a229', '#d4921f', '#c48218', '#b37210'];
+    const mutedColors = ['rgba(242, 185, 78, 0.7)', 'rgba(230, 162, 41, 0.7)', 'rgba(212, 146, 31, 0.7)'];
+
+    // Module hours
+    new Chart(document.getElementById('moduleHoursChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Module 1 (Foundations)', 'Module 2 (Power BI)'],
+        datasets: [{
+          data: [4, 10],
+          backgroundColor: [accentColors[0], accentColors[2]],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    // Module 1 split
+    new Chart(document.getElementById('module1Chart'), {
+      type: 'pie',
+      data: {
+        labels: ['Data & BI for Managers', 'BI Tools & Storytelling'],
+        datasets: [{
+          data: [2, 2],
+          backgroundColor: [accentColors[0], accentColors[1]],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    // Module 2 sessions
+    new Chart(document.getElementById('module2Chart'), {
+      type: 'bar',
+      data: {
+        labels: ['Install & Report', 'Transform & Clean', 'Data Modeling', 'DAX', 'Visuals & Service'],
+        datasets: [{
+          label: 'Hours',
+          data: [2, 2, 2, 2, 2],
+          backgroundColor: accentColors
+        }]
+      },
+      options: {
+        responsive: true,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            max: 3,
+            ticks: { stepSize: 1 }
+          }
+        }
+      }
+    });
+
+    // Bloom's taxonomy
+    new Chart(document.getElementById('bloomChart'), {
+      type: 'polarArea',
+      data: {
+        labels: ['Remember', 'Understand', 'Apply', 'Analyze', 'Evaluate', 'Create'],
+        datasets: [{
+          data: [4, 5, 8, 4, 3, 2],
+          backgroundColor: [
+            'rgba(110, 231, 183, 0.6)',
+            'rgba(147, 197, 253, 0.6)',
+            'rgba(196, 181, 253, 0.6)',
+            'rgba(252, 211, 77, 0.6)',
+            'rgba(244, 114, 182, 0.6)',
+            'rgba(94, 234, 212, 0.6)'
+          ],
+          borderWidth: 1,
+          borderColor: '#1a2332'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    // 5-day schedule
+    new Chart(document.getElementById('scheduleChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+        datasets: [{
+          label: 'Sessions',
+          data: [4, 3, 3, 3, 3],
+          backgroundColor: accentColors
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 6,
+            ticks: { stepSize: 1 }
+          }
+        }
+      }
+    });
+
+    // Assessment types
+    new Chart(document.getElementById('assessmentChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Lab Checklist', 'Quiz/MCQ', 'Group Exercise', 'Dashboard Rubric', 'Presentation', 'Reflection'],
+        datasets: [{
+          data: [5, 6, 4, 3, 2, 2],
+          backgroundColor: mutedColors.concat(['rgba(242, 185, 78, 0.5)', 'rgba(230, 162, 41, 0.5)', 'rgba(212, 146, 31, 0.5)']),
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      const isOpen = content.style.display === 'block';
+      content.style.display = isOpen ? 'none' : 'block';
+      header.querySelector('span:last-child').textContent = isOpen ? '▼' : '▲';
+    }
+
+    // Open first accordion by default
+    document.querySelectorAll('.accordion-content').forEach((el, i) => {
+      el.style.display = i === 0 ? 'block' : 'none';
+    });
+    document.querySelectorAll('.accordion-header span:last-child').forEach((el, i) => {
+      el.textContent = i === 0 ? '▲' : '▼';
+    });
+  </script>
+</body>
+</html>
