@@ -75,9 +75,10 @@
 
     nav .container {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
       padding: 16px 24px;
+      gap: 16px;
     }
 
     .logo {
@@ -88,8 +89,15 @@
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px 48px;
       list-style: none;
+      max-width: 900px;
+    }
+
+    .nav-links li {
+      margin: 0;
     }
 
     .nav-links a {
@@ -683,6 +691,66 @@
       color: var(--accent);
     }
 
+    /* Instructor section */
+    .instructor-section {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .instructor-photo {
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+
+    .instructor-bio {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .instructor-bio h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    .instructor-bio .title {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .instructor-books {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .instructor-books ul {
+      margin-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .instructor-books li { margin-bottom: 6px; }
+
+    .instructor-books a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .instructor-books a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .instructor-section { flex-direction: column; align-items: center; }
+      .instructor-photo { width: 160px; height: 160px; }
+    }
+
     /* Footer */
     footer {
       padding: 48px 0;
@@ -699,7 +767,8 @@
     /* Responsive */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        gap: 16px 24px;
+        max-width: 100%;
       }
       .hero {
         padding: 48px 0 64px;
@@ -718,7 +787,9 @@
     <div class="container">
       <span class="logo">Power BI Course</span>
       <ul class="nav-links">
+        <li><a href="#instructor">Instructor</a></li>
         <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#installation">Installation</a></li>
         <li><a href="#history">History</a></li>
         <li><a href="#case-studies">Case Studies</a></li>
         <li><a href="#enterprise">Enterprise</a></li>
@@ -742,6 +813,41 @@
     </div>
   </header>
 
+  <section id="instructor">
+    <div class="container">
+      <h2 class="section-title">About the Instructor</h2>
+      <p class="section-subtitle">Vikram Singh Sankhala</p>
+
+      <div class="card">
+        <div class="instructor-section">
+          <img src="assets/vikram-sankhala.png" alt="Vikram Singh Sankhala" class="instructor-photo">
+          <div class="instructor-bio">
+            <h3>Vikram Singh Sankhala</h3>
+            <p class="title">Author, Educator & Analytics Expert</p>
+            <p>Vikram Sankhala is an author and educator with expertise in analytics, data science, and business intelligence. He has created lecture notes and courses spanning Natural Language Processing, Big Data, Applied Analytics, Sales Analytics, Customer Analytics, Python programming, Data Science, and IoT for managers.</p>
+            <p style="margin-top: 12px;">His teaching approach emphasizes practical, hands-on learning—from foundational concepts to real-world applications. The Power BI course reflects this philosophy: bridging technical skills with managerial interpretation so MBAs and business leaders can leverage data for decision-making.</p>
+            <div class="instructor-books">
+              <p style="color: var(--text); font-weight: 600; margin-bottom: 10px;">Published Works (Goodreads):</p>
+              <ul>
+                <li><a href="https://www.goodreads.com/book/show/155172726-natural-language-processing" target="_blank" rel="noopener">Natural Language Processing: Lecture Notes</a></li>
+                <li><a href="https://www.goodreads.com/book/show/155192539-big-data" target="_blank" rel="noopener">Big Data: Lecture Notes</a></li>
+                <li>Applied Analytics: Lecture Slides</li>
+                <li>Sales Analytics: Lecture Slides</li>
+                <li>Customer Analytics: Lecture Slides</li>
+                <li>Python Step by Step (Levels 1–3)</li>
+                <li>Data Science Step by Step: Level 1</li>
+                <li>IoT for Managers: Lecture Notes</li>
+              </ul>
+              <p style="margin-top: 16px;">
+                <a href="https://www.goodreads.com/author/list/36475998.vikram_sankhala" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">View all books on Goodreads →</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="introduction">
     <div class="container">
       <h2 class="section-title">Introduction</h2>
@@ -751,6 +857,95 @@
         <p>Business Intelligence (BI) has evolved from static reports to interactive, real-time dashboards that drive strategic decisions. For MBAs and managers, the ability to interpret data, choose the right tools, and communicate insights to stakeholders is no longer optional—it's essential.</p>
         <p style="margin-top: 16px;">This course bridges the gap between technical data teams and business leadership. You will learn the vocabulary of BI (ETL, data warehouses, KPIs), understand how organizations like Netflix and retail chains use data pipelines, and build practical Power BI dashboards that answer executive questions.</p>
         <p style="margin-top: 16px;">Whether you're preparing for a role in strategy, operations, or analytics, this bootcamp gives you the foundation to speak confidently about data, evaluate BI tools, and deliver insights that drive action.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="installation">
+    <div class="container">
+      <h2 class="section-title">Installation Guide</h2>
+      <p class="section-subtitle">Power BI Desktop and Tableau Public — get started before the course</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Power BI Desktop</h3>
+          <p><strong>Download:</strong> <a href="https://powerbi.microsoft.com/desktop/" target="_blank" rel="noopener" style="color: var(--accent);">powerbi.microsoft.com/desktop</a></p>
+          <p style="margin-top: 16px;"><strong>System requirements:</strong></p>
+          <ul>
+            <li>Windows 10/11 (64-bit) or Windows Server 2016+</li>
+            <li>4 GB RAM minimum (8 GB recommended)</li>
+            <li>1.5 GB free disk space</li>
+            <li>.NET 4.7.2 or later (usually included)</li>
+          </ul>
+          <p style="margin-top: 16px;"><strong>Installation steps:</strong></p>
+          <ol style="margin-left: 20px; color: var(--text-muted);">
+            <li>Download the installer from the Microsoft Power BI Desktop page</li>
+            <li>Run <code>PBIDesktopSetup_x64.exe</code> (or the downloaded file)</li>
+            <li>Accept the license terms and choose installation path</li>
+            <li>Click Install; wait for completion (2–5 minutes)</li>
+            <li>Launch Power BI Desktop from Start menu or desktop shortcut</li>
+            <li>Sign in with a Microsoft account (or work/school account) for full features</li>
+          </ol>
+          <p style="margin-top: 16px;"><strong>Note:</strong> Power BI Desktop is free. A free Microsoft account enables publishing to Power BI Service (with some limits).</p>
+        </div>
+        <div class="card">
+          <h3>Tableau Public</h3>
+          <p><strong>Download:</strong> <a href="https://public.tableau.com/app/download/tableau-public-desktop" target="_blank" rel="noopener" style="color: var(--accent);">public.tableau.com/app/download/tableau-public-desktop</a></p>
+          <p style="margin-top: 16px;"><strong>System requirements:</strong></p>
+          <ul>
+            <li>Windows 10/11 (64-bit) or macOS 10.15+</li>
+            <li>4 GB RAM minimum (8 GB recommended)</li>
+            <li>1.5 GB free disk space</li>
+            <li>Display: 1280 × 800 minimum resolution</li>
+          </ul>
+          <p style="margin-top: 16px;"><strong>Installation steps:</strong></p>
+          <ol style="margin-left: 20px; color: var(--text-muted);">
+            <li>Go to Tableau Public download page</li>
+            <li>Download the installer for your OS (Windows or Mac)</li>
+            <li>Run the installer and follow the setup wizard</li>
+            <li>Accept the license agreement; choose installation location</li>
+            <li>Complete installation (3–5 minutes)</li>
+            <li>Launch Tableau Public; create a free Tableau Public account when prompted</li>
+          </ol>
+          <p style="margin-top: 16px;"><strong>Note:</strong> Tableau Public is free. Workbooks are saved to the cloud and are publicly viewable. For private work, use Tableau Desktop (paid).</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h3>Quick Comparison</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Power BI Desktop</th>
+                <th>Tableau Public</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cost</td>
+                <td>Free</td>
+                <td>Free</td>
+              </tr>
+              <tr>
+                <td>Platform</td>
+                <td>Windows only</td>
+                <td>Windows, Mac</td>
+              </tr>
+              <tr>
+                <td>Account required</td>
+                <td>Microsoft account (for publishing)</td>
+                <td>Tableau Public account</td>
+              </tr>
+              <tr>
+                <td>Data privacy</td>
+                <td>Can keep reports private (with Pro license)</td>
+                <td>Workbooks are public by default</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
