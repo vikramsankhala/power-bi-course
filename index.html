@@ -653,6 +653,36 @@
 
     .blueprint-phase li { margin-bottom: 8px; }
 
+    /* Formula / code blocks */
+    .formula-block {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #93c5fd;
+      margin: 12px 0;
+      overflow-x: auto;
+    }
+
+    .formula-block .comment { color: var(--text-muted); }
+    .formula-block .keyword { color: #c4b5fd; }
+    .formula-block .func { color: var(--accent); }
+
+    .formula-table {
+      font-size: 0.9rem;
+    }
+
+    .formula-table code {
+      background: var(--bg-dark);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
     /* Footer */
     footer {
       padding: 48px 0;
@@ -697,6 +727,7 @@
         <li><a href="#modules">Modules</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="#visualizations">Visualizations</a></li>
+        <li><a href="#references">References</a></li>
         <li><a href="#assessments">Assessments</a></li>
       </ul>
     </div>
@@ -1610,6 +1641,139 @@
           <li><strong>Appropriateness of visuals</strong> — 25%</li>
           <li><strong>Effective interactivity</strong> — 20%</li>
           <li><strong>Storyline coherence for executives</strong> — 25%</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="references">
+    <div class="container">
+      <h2 class="section-title">Reference: Transformation & DAX Formulae</h2>
+      <p class="section-subtitle">Quick reference for Power Query (M) and DAX</p>
+
+      <div class="card">
+        <h3>Commonly Used Power Query (M) Transformation Formulae</h3>
+        <p>Power Query uses the M language for data transformation. Below are frequently used patterns.</p>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Filtering & Removing</h4>
+        <div class="formula-block">Table.SelectRows(Source, each [Revenue] &gt; 0)</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Filter rows where Revenue is positive</p>
+
+        <div class="formula-block">Table.RemoveColumns(Source, {"Column1", "UnwantedCol"})</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Remove specified columns</p>
+
+        <div class="formula-block">Table.Distinct(Source, {"KeyColumn"})</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Remove duplicate rows based on key column(s)</p>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Data Type & Formatting</h4>
+        <div class="formula-block">Table.TransformColumnTypes(Source, {{"Date", type date}, {"Revenue", type number}})</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Change column data types</p>
+
+        <div class="formula-block">Text.Trim([CustomerName])</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Remove leading/trailing spaces (in Add Column)</p>
+
+        <div class="formula-block">Text.Proper([Region])</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Convert to Title Case</p>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Splitting & Combining</h4>
+        <div class="formula-block">Table.SplitColumn(Source, "FullName", Splitter.SplitTextByDelimiter(" "), {"First", "Last"})</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Split column by delimiter</p>
+
+        <div class="formula-block">[FirstName] &amp; " " &amp; [LastName]</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Concatenate columns (Add Column → Custom Column)</p>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Handling Blanks & Nulls</h4>
+        <div class="formula-block">Table.ReplaceValue(Source, null, 0, Replacer.ReplaceValue, {"Quantity"})</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Replace null with 0 in Quantity column</p>
+
+        <div class="formula-block">if [Region] = null then "Unknown" else [Region]</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Conditional replacement (Custom Column)</p>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Aggregation & Grouping</h4>
+        <div class="formula-block">Table.Group(Source, {"Region"}, {{"TotalRevenue", each List.Sum([Revenue]), type number}})</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Group by Region, sum Revenue</p>
+      </div>
+
+      <div class="card">
+        <h3>Commonly Used DAX Formulae</h3>
+        <p>DAX (Data Analysis Expressions) is used for measures and calculated columns in Power BI.</p>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Aggregation</h4>
+        <div class="formula-block">Total Revenue = SUM(Sales[Revenue])</div>
+        <div class="formula-block">Avg Order Value = AVERAGE(Sales[OrderAmount])</div>
+        <div class="formula-block">Order Count = COUNTROWS(Sales)</div>
+        <div class="formula-block">Distinct Customers = DISTINCTCOUNT(Sales[CustomerID])</div>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">CALCULATE & Filter Context</h4>
+        <div class="formula-block">Revenue (West Only) = CALCULATE(SUM(Sales[Revenue]), Region[RegionName] = "West")</div>
+        <div class="formula-block">Revenue YTD = CALCULATE(SUM(Sales[Revenue]), DATESYTD('Date'[Date]))</div>
+        <div class="formula-block">Revenue Last Year = CALCULATE(SUM(Sales[Revenue]), SAMEPERIODLASTYEAR('Date'[Date]))</div>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Time Intelligence</h4>
+        <div class="formula-block">Revenue MoM % = DIVIDE([Revenue] - [Revenue LM], [Revenue LM])</div>
+        <div class="formula-block">Revenue LM = CALCULATE([Revenue], DATEADD('Date'[Date], -1, MONTH))</div>
+        <div class="formula-block">Revenue YoY % = DIVIDE([Revenue] - [Revenue LY], [Revenue LY])</div>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Ratios & Percentages</h4>
+        <div class="formula-block">Gross Margin % = DIVIDE(SUM(Sales[GrossProfit]), SUM(Sales[Revenue]), 0)</div>
+        <div class="formula-block">Revenue per Customer = DIVIDE([Total Revenue], [Distinct Customers], 0)</div>
+        <div class="formula-block">% of Total = DIVIDE([Revenue], CALCULATE([Revenue], ALL(Region)), 0)</div>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Conditional & Logical</h4>
+        <div class="formula-block">Revenue Tier = IF([Revenue] &gt; 1000000, "High", IF([Revenue] &gt; 100000, "Medium", "Low"))</div>
+        <div class="formula-block">Has Sales = IF([Revenue] &gt; 0, "Yes", "No")</div>
+        <div class="formula-block">Top N Filter = IF(RANKX(ALL(Product), [Revenue], , DESC) &lt;= 10, [Revenue], BLANK())</div>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Useful Functions Quick Reference</h4>
+        <div class="table-wrap">
+          <table class="formula-table">
+            <thead>
+              <tr>
+                <th>Function</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>SUM</code>, <code>AVERAGE</code>, <code>COUNT</code></td><td>Basic aggregation</td></tr>
+              <tr><td><code>CALCULATE</code></td><td>Modify filter context</td></tr>
+              <tr><td><code>DIVIDE</code></td><td>Safe division (handles divide-by-zero)</td></tr>
+              <tr><td><code>FILTER</code></td><td>Return filtered table</td></tr>
+              <tr><td><code>ALL</code>, <code>ALLEXCEPT</code></td><td>Remove filters</td></tr>
+              <tr><td><code>RELATED</code>, <code>RELATEDTABLE</code></td><td>Cross-table references</td></tr>
+              <tr><td><code>RANKX</code></td><td>Ranking</td></tr>
+              <tr><td><code>DATESYTD</code>, <code>DATEADD</code></td><td>Time intelligence</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Copilot in Power BI and Tableau</h3>
+        <p>Both Microsoft and Salesforce have integrated AI assistants to accelerate report creation, data exploration, and insight generation.</p>
+
+        <h4 style="color: var(--accent); margin: 24px 0 12px; font-size: 1rem;">Power BI Copilot</h4>
+        <ul>
+          <li><strong>Report creation:</strong> Describe what you want in natural language—e.g., "Show revenue by region as a bar chart"—and Copilot suggests visuals, layouts, and data bindings.</li>
+          <li><strong>DAX generation:</strong> Ask for measures in plain English ("Revenue year over year growth") and Copilot drafts DAX; you review and apply.</li>
+          <li><strong>Q&amp;A (Ask a question):</strong> Natural language queries over your model—"What were total sales in Q3 last year?"—return answers without building visuals.</li>
+          <li><strong>Data model:</strong> Copilot can suggest relationships, summarize tables, and recommend optimizations.</li>
+          <li><strong>Availability:</strong> Requires Power BI Premium or Premium Per User (PPU). Part of Microsoft 365 Copilot when licensed.</li>
+        </ul>
+
+        <h4 style="color: var(--accent); margin: 24px 0 12px; font-size: 1rem;">Tableau Copilot (Tableau Pulse / Einstein)</h4>
+        <ul>
+          <li><strong>Ask Data:</strong> Natural language queries—"Show me top 10 products by revenue"—generate visualizations and refine with follow-up questions.</li>
+          <li><strong>Tableau Pulse:</strong> AI-driven insights surface automatically; monitors metrics and alerts when trends change.</li>
+          <li><strong>Explain Data:</strong> Select a data point and ask "Why is this high/low?"—Copilot suggests statistical explanations and related dimensions.</li>
+          <li><strong>Viz creation:</strong> Describe what you want; Copilot suggests chart types and field mappings.</li>
+          <li><strong>Availability:</strong> Varies by Tableau plan (Creator, Explorer). Tableau Pulse and advanced features on higher tiers.</li>
+        </ul>
+
+        <h4 style="color: var(--text-muted); margin: 24px 0 12px; font-size: 1rem;">Best Practices</h4>
+        <ul>
+          <li>Use Copilot to accelerate first drafts; always validate DAX, measures, and visuals for accuracy.</li>
+          <li>Ensure data models are well-structured—Copilot performs better with clear relationships and naming.</li>
+          <li>Governance: Define who can use Copilot; review AI-generated content before publishing.</li>
         </ul>
       </div>
     </div>
