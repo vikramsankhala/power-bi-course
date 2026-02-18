@@ -780,6 +780,157 @@
         height: 280px;
       }
     }
+
+    /* Lead form */
+    .lead-form-section {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26, 35, 50, 0.5) 100%);
+    }
+
+    .lead-form-card {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .lead-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .lead-form label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .lead-form input,
+    .lead-form select,
+    .lead-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .lead-form input:focus,
+    .lead-form select:focus,
+    .lead-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .lead-form input::placeholder,
+    .lead-form textarea::placeholder {
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    .lead-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .lead-form .form-row { grid-template-columns: 1fr; }
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+      border: none;
+      border-radius: 10px;
+      color: var(--bg-dark);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(242, 185, 78, 0.3);
+    }
+
+    .lead-form-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* WhatsApp section */
+    .whatsapp-section {
+      background: rgba(37, 211, 102, 0.08);
+      border: 1px solid rgba(37, 211, 102, 0.2);
+    }
+
+    .whatsapp-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 32px;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      color: #fff;
+    }
+
+    .whatsapp-btn svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Floating WhatsApp button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      color: #fff;
+    }
+
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+    }
   </style>
 </head>
 <body>
@@ -801,6 +952,8 @@
         <li><a href="#visualizations">Visualizations</a></li>
         <li><a href="#references">References</a></li>
         <li><a href="#assessments">Assessments</a></li>
+        <li><a href="#lead-form">Get Playbook</a></li>
+        <li><a href="#whatsapp">WhatsApp</a></li>
       </ul>
     </div>
   </nav>
@@ -2240,6 +2393,84 @@
     </div>
   </section>
 
+  <section id="lead-form" class="lead-form-section">
+    <div class="container">
+      <h2 class="section-title">Get Your Free Power BI Playbook</h2>
+      <p class="section-subtitle">Enter your details below to receive our detailed MBA Power BI Playbook — a comprehensive guide to BI vocabulary, dashboards, and decision-making frameworks.</p>
+
+      <div class="card lead-form-card">
+        <form id="leadForm" class="lead-form" action="" method="POST" target="_blank">
+          <input type="hidden" name="siteUrl" id="siteUrl" value="">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+            </div>
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <input type="text" id="company" name="company" placeholder="Your company name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="role">Role / Job Title</label>
+            <input type="text" id="role" name="role" placeholder="e.g. MBA Student, Manager, Analyst">
+          </div>
+          <div class="form-group">
+            <label for="interest">Primary Interest</label>
+            <select id="interest" name="interest">
+              <option value="">Select your interest</option>
+              <option value="course-enrollment">Course Enrollment</option>
+              <option value="corporate-training">Corporate Training</option>
+              <option value="self-study">Self-Study / Resources</option>
+              <option value="consulting">Consulting</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" rows="3" placeholder="Any questions or specific topics you'd like to explore?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Submit &amp; Download Playbook</button>
+          <p class="lead-form-note">Your information will be saved securely. We'll send you the playbook link and may follow up with relevant course updates.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="whatsapp" class="whatsapp-section">
+    <div class="container">
+      <h2 class="section-title">Chat on WhatsApp</h2>
+      <p class="section-subtitle">Have questions about the course? Want to discuss corporate training or enrollment? Reach out directly on WhatsApp.</p>
+      <div class="card">
+        <div class="whatsapp-card">
+          <a href="#" id="whatsappBtn" class="whatsapp-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Start WhatsApp Chat
+          </a>
+          <p style="color: var(--text-muted); margin: 0;">We typically respond within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="#" id="whatsappFloat" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
   <footer>
     <div class="container">
       <p>Vikram Power BI Course — MBA Bootcamp • Converted from course outline document</p>
@@ -2248,6 +2479,34 @@
   </footer>
 
   <script>
+    // CONFIG: Replace with your deployed Google Apps Script Web App URL (see google-apps-script.js for setup)
+    const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+    // CONFIG: WhatsApp number (country code + number, no + or spaces)
+    const WHATSAPP_NUMBER = '919819543261';
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('leadForm');
+      const siteUrlInput = document.getElementById('siteUrl');
+      if (form && siteUrlInput) {
+        siteUrlInput.value = window.location.origin;
+        if (GOOGLE_APPS_SCRIPT_URL && GOOGLE_APPS_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+          form.action = GOOGLE_APPS_SCRIPT_URL;
+        }
+        form.addEventListener('submit', function(e) {
+          if (!form.action || form.action === '' || form.action.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+            e.preventDefault();
+            window.open('playbook.html', '_blank');
+            alert('Playbook opened! To save leads to Google Sheets, configure GOOGLE_APPS_SCRIPT_URL in the page source (see google-apps-script.js for setup).');
+          }
+        });
+      }
+      var waUrl = 'https://wa.me/' + (typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : '1234567890') + '?text=' + encodeURIComponent("Hi, I'm interested in the Power BI course");
+      var waBtn = document.getElementById('whatsappBtn');
+      var waFloat = document.getElementById('whatsappFloat');
+      if (waBtn) waBtn.href = waUrl;
+      if (waFloat) waFloat.href = waUrl;
+    });
+
     Chart.defaults.color = '#8b98a5';
     Chart.defaults.borderColor = '#2f3d4d';
     Chart.defaults.font.family = "'DM Sans', sans-serif";

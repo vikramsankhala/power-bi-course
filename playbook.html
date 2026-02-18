@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI MBA Playbook — Vikram Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1419;
+      --card: #1a2332;
+      --accent: #f2b94e;
+      --text: #e7e9ea;
+      --muted: #8b98a5;
+      --border: #2f3d4d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    @media print { body { background: #fff; color: #111; } .no-print { display: none; } }
+    h1 { font-size: 2rem; color: var(--accent); margin-bottom: 8px; border-bottom: 2px solid var(--accent); padding-bottom: 12px; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 32px 0 16px; }
+    h3 { font-size: 1.15rem; margin: 24px 0 12px; color: var(--text); }
+    p { margin-bottom: 12px; color: var(--muted); }
+    ul, ol { margin: 12px 0 12px 24px; }
+    li { margin-bottom: 8px; color: var(--muted); }
+    .cover { text-align: center; margin-bottom: 48px; padding: 32px;
+      background: linear-gradient(135deg, rgba(242,185,78,0.1) 0%, transparent 100%);
+      border: 1px solid var(--border); border-radius: 12px; }
+    .cover .subtitle { font-size: 1.1rem; color: var(--muted); }
+    .section { margin-bottom: 32px; }
+    .block { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 16px 0; }
+    code { font-family: 'JetBrains Mono', monospace; background: rgba(242,185,78,0.15); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; }
+    code.block { display: block; padding: 16px; margin: 12px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    th, td { padding: 12px; text-align: left; border: 1px solid var(--border); }
+    th { background: var(--card); color: var(--accent); font-weight: 600; }
+    .btn-download { display: inline-block; padding: 12px 24px; background: var(--accent); color: var(--bg); font-weight: 600; margin-top: 16px; border-radius: 8px; text-decoration: none; }
+    .btn-download:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="text-align: right; margin-bottom: 24px;">
+    <button onclick="window.print()" class="btn-download">Print / Save as PDF</button>
+  </div>
+
+  <div class="cover">
+    <h1>Power BI MBA Playbook</h1>
+    <p class="subtitle">A Manager's Guide to Business Intelligence, Dashboards & Decision-Making</p>
+    <p style="margin-top: 16px;">Vikram Power BI Course — MBA Bootcamp</p>
+    <p style="font-size: 0.9rem; margin-top: 8px;">Version 1.0</p>
+  </div>
+
+  <section class="section">
+    <h2>1. BI Vocabulary for Managers</h2>
+    <p>Master these terms to communicate effectively with data teams and stakeholders.</p>
+    <table>
+      <tr><th>Term</th><th>Definition</th></tr>
+      <tr><td><strong>ETL</strong></td><td>Extract, Transform, Load — the process of moving data from sources into a data warehouse.</td></tr>
+      <tr><td><strong>Data Warehouse</strong></td><td>Central repository for integrated data from multiple sources, optimized for analysis.</td></tr>
+      <tr><td><strong>KPI</strong></td><td>Key Performance Indicator — a measurable value that shows progress toward a business goal.</td></tr>
+      <tr><td><strong>Dashboard</strong></td><td>Visual display of key metrics and KPIs for at-a-glance monitoring.</td></tr>
+      <tr><td><strong>Data Model</strong></td><td>Structure of tables and relationships that define how data connects for analysis.</td></tr>
+      <tr><td><strong>DAX</strong></td><td>Data Analysis Expressions — formula language in Power BI for calculations.</td></tr>
+      <tr><td><strong>Measure</strong></td><td>Calculated value (e.g., total revenue, YoY growth) computed from underlying data.</td></tr>
+      <tr><td><strong>Dimension</strong></td><td>Categorical attribute (region, product, time) used to slice measures.</td></tr>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>2. Power BI Architecture Overview</h2>
+    <p>Understand how data flows from source to insight.</p>
+    <div class="block">
+      <strong>Data Sources</strong> → <strong>Power Query (ETL)</strong> → <strong>Data Model</strong> → <strong>DAX Measures</strong> → <strong>Visualizations</strong> → <strong>Reports & Dashboards</strong>
+    </div>
+    <h3>Key Components</h3>
+    <ul>
+      <li><strong>Power BI Desktop:</strong> Free authoring tool for building reports and data models.</li>
+      <li><strong>Power BI Service:</strong> Cloud platform for sharing, collaboration, and scheduled refresh.</li>
+      <li><strong>Power Query:</strong> ETL tool for connecting, transforming, and cleaning data.</li>
+      <li><strong>DAX:</strong> Formula language for measures and calculated columns.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>3. Data Transformation Best Practices</h2>
+    <ul>
+      <li>Remove unnecessary columns early to improve performance.</li>
+      <li>Use appropriate data types (e.g., Date, Decimal, Text).</li>
+      <li>Create meaningful column names; avoid spaces in technical names.</li>
+      <li>Handle nulls and errors explicitly (Replace Values, Fill Down).</li>
+      <li>Document steps in Power Query for reproducibility.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>4. Data Modeling Guidelines</h2>
+    <h3>Star Schema</h3>
+    <p>Design with a central fact table (transactions, events) and dimension tables (products, customers, time).</p>
+    <h3>Relationships</h3>
+    <ul>
+      <li>Use one-to-many relationships (dimension → fact).</li>
+      <li>Set correct cross-filter direction (usually single).</li>
+      <li>Avoid circular relationships and many-to-many when possible.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>5. Essential DAX Patterns</h2>
+    <div class="block">
+      <strong>Total Revenue:</strong><br>
+      <code class="block">Total Revenue = SUM(Sales[Revenue])</code>
+    </div>
+    <div class="block">
+      <strong>Year-over-Year Growth:</strong><br>
+      <code class="block">YoY Growth = DIVIDE([Total Revenue] - [Prior Year Revenue], [Prior Year Revenue])</code>
+    </div>
+    <div class="block">
+      <strong>Running Total:</strong><br>
+      <code class="block">Running Total = CALCULATE([Total Revenue], FILTER(ALL(DateTable), DateTable[Date] <= MAX(DateTable[Date])))</code>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>6. Visualization Selection Guide</h2>
+    <table>
+      <tr><th>Question</th><th>Recommended Chart</th></tr>
+      <tr><td>Compare categories</td><td>Bar chart (horizontal)</td></tr>
+      <tr><td>Show trend over time</td><td>Line chart</td></tr>
+      <tr><td>Part-to-whole</td><td>Pie / Donut (few categories)</td></tr>
+      <tr><td>Correlation</td><td>Scatter plot</td></tr>
+      <tr><td>Geographic distribution</td><td>Map</td></tr>
+      <tr><td>Single KPI</td><td>Card / KPI visual</td></tr>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>7. Dashboard Design Principles</h2>
+    <ul>
+      <li><strong>Hierarchy:</strong> Most important metrics at top-left; drill-down details below.</li>
+      <li><strong>Consistency:</strong> Use the same colors and fonts across visuals.</li>
+      <li><strong>Simplicity:</strong> Avoid clutter; one main message per visual.</li>
+      <li><strong>Context:</strong> Add titles, labels, and tooltips for clarity.</li>
+      <li><strong>Interactivity:</strong> Use slicers and cross-filtering for exploration.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>8. Managerial Decision Framework</h2>
+    <ol>
+      <li><strong>Define the question</strong> — What decision needs to be made?</li>
+      <li><strong>Identify data</strong> — What data is available and relevant?</li>
+      <li><strong>Build the view</strong> — Which visuals answer the question?</li>
+      <li><strong>Interpret</strong> — What does the data show? What are the implications?</li>
+      <li><strong>Recommend</strong> — What action should be taken?</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>9. Pre-Course Checklist</h2>
+    <ul>
+      <li>Install Power BI Desktop (powerbi.microsoft.com/desktop)</li>
+      <li>Install Tableau Public (optional, for comparison)</li>
+      <li>Sign in with a Microsoft account for Power BI Service access</li>
+      <li>Download sample datasets: Retail Analysis, Store Sales, or Regional Sales</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>10. Resources & Next Steps</h2>
+    <ul>
+      <li>Microsoft Power BI documentation: docs.microsoft.com/power-bi</li>
+      <li>Kevin Stratvert — Power BI 10-min beginner tutorial (YouTube)</li>
+      <li>DAX Guide: dax.guide — reference for DAX functions</li>
+    </ul>
+    <p style="margin-top: 24px;">— End of Playbook —</p>
+    <p style="font-size: 0.9rem; color: var(--muted);">Vikram Power BI Course | MBA Bootcamp</p>
+  </section>
+
+  <div class="no-print" style="text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);">
+    <a href="index.html" class="btn-download">← Back to Course</a>
+  </div>
+</body>
+</html>

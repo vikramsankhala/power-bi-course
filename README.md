@@ -4,6 +4,9 @@ A detailed web application built from the **Vikram Power BI Course Outline** doc
 
 ## Features
 
+- **Lead Generation & Playbook** — Form to capture visitor info; downloadable Power BI MBA Playbook
+- **Google Sheets Integration** — Form submissions saved to a Google Sheet (via Apps Script)
+- **WhatsApp Chat** — Section and floating button for direct WhatsApp contact
 - **Course Overview** — Bootcamp framing, target audience, learning approach
 - **Interactive Visualizations** — Chart.js charts for:
   - Total hours by module (doughnut)
@@ -16,6 +19,21 @@ A detailed web application built from the **Vikram Power BI Course Outline** doc
 - **5-Day Schedule** — Full day-by-day table with outcomes and assessments
 - **Question Bank** — Bloom-aligned Remember, Understand, Apply, Analyze, Evaluate, Create
 - **Resources** — YouTube links, Microsoft samples, documentation
+
+## Setup: Lead Form & Google Sheets
+
+1. **Create a Google Sheet** with a tab named `Leads` and headers in Row 1:
+   `Timestamp | First Name | Last Name | Email | Phone | Company | Role | Interest | Message | Site URL`
+
+2. **Add the Apps Script:** Extensions → Apps Script → paste contents of `google-apps-script.js`
+
+3. **Deploy:** Deploy → New deployment → Web app → Execute as: Me, Who has access: Anyone → Deploy
+
+4. **Copy the Web app URL** and in `index.html` replace `YOUR_GOOGLE_APPS_SCRIPT_URL` with it.
+
+## Setup: WhatsApp
+
+In `index.html`, replace `1234567890` in `WHATSAPP_NUMBER` with your WhatsApp number (country code + number, no + or spaces). Example: `919876543210` for India.
 
 ## Deploy to Netlify
 
