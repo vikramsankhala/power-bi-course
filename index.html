@@ -931,6 +931,70 @@
       width: 32px;
       height: 32px;
     }
+
+    /* Video grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card h3, .video-card h4 { font-size: 1rem; margin-bottom: 8px; }
+    .video-card p { font-size: 0.9rem; margin-bottom: 12px; }
+    .video-link {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .video-link:hover { text-decoration: underline; }
+
+    .ai-subsection { margin-bottom: 48px; }
+    .ai-subsection:last-child { margin-bottom: 0; }
+    .ai-subtitle { color: var(--accent); font-size: 1.2rem; margin-bottom: 20px; }
+
+    /* AI Assistant */
+    .ai-messages {
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 16px;
+      background: var(--bg-dark);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      min-height: 120px;
+    }
+    .ai-msg { margin-bottom: 16px; padding: 12px 16px; border-radius: 10px; }
+    .ai-msg.user { background: var(--accent-muted); margin-left: 24px; }
+    .ai-msg.assistant { background: var(--bg-elevated); margin-right: 24px; }
+    .ai-msg.assistant .label { font-size: 0.75rem; color: var(--accent); margin-bottom: 4px; }
+    .ai-msg .text { color: var(--text-muted); font-size: 0.95rem; white-space: pre-wrap; }
+    .ai-input-row { display: flex; gap: 12px; align-items: flex-end; }
+    .ai-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 48px;
+    }
+    .ai-input:focus { outline: none; border-color: var(--accent); }
+    .ai-send-btn {
+      padding: 14px 24px;
+      background: var(--accent);
+      color: var(--bg-dark);
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .ai-send-btn:hover { opacity: 0.9; }
+    .ai-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .ai-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -951,6 +1015,9 @@
         <li><a href="#schedule-12day">12-Day Schedule</a></li>
         <li><a href="#visualizations">Visualizations</a></li>
         <li><a href="#references">References</a></li>
+        <li><a href="#youtube">YouTube</a></li>
+        <li><a href="#ai-section">AI in Power BI & Tableau</a></li>
+        <li><a href="#ai-assistant">AI Assistant</a></li>
         <li><a href="#assessments">Assessments</a></li>
         <li><a href="#lead-form">Get Playbook</a></li>
         <li><a href="#whatsapp">WhatsApp</a></li>
@@ -2379,6 +2446,251 @@
     </div>
   </section>
 
+  <section id="youtube">
+    <div class="container">
+      <h2 class="section-title">YouTube Learning Resources</h2>
+      <p class="section-subtitle">State-of-the-art tutorials (2025–2026) — recommended for self-paced learning</p>
+      <div class="video-grid">
+        <div class="card video-card">
+          <h3>1. Power BI Complete Course 2026</h3>
+          <p>Beginner to expert in 20 hours. Comprehensive coverage of Power BI Desktop, reports, DAX, and dashboards.</p>
+          <a href="https://www.youtube.com/watch?v=cyWVzAQF9YU" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>2. Power BI Beginner Tutorial (2025)</h3>
+          <p>Quick start: data import, cleaning, and building your first interactive dashboard.</p>
+          <a href="https://www.youtube.com/watch?v=MikekdopYhE" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>3. Power BI November 2025 Update</h3>
+          <p>Official Microsoft update: Copilot improvements, DAX Query View, Card Visual, and Fabric integration.</p>
+          <a href="https://www.youtube.com/watch?v=pRFeQWzUhn0" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>4. Power BI August 2025 Update</h3>
+          <p>Direct Lake model creation, mirrored Databricks catalogs, Semantic Model Refresh Templates.</p>
+          <a href="https://www.youtube.com/watch?v=AEXtSe2OA5E" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>5. Tableau 2025.2 Feature Breakdown</h3>
+          <p>New updates: dynamic color ranges, spatial parameters, Tableau Pulse, cloud features.</p>
+          <a href="https://www.youtube.com/watch?v=4EZw48uW6h0" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>6. Power BI DAX Query View with Copilot</h3>
+          <p>Use Copilot to write DAX queries, create measures, and explain complex formulas.</p>
+          <a href="https://www.youtube.com/watch?v=elHN9hTtfNE" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>7. Tableau Pulse Demo — AI-Powered Analytics</h3>
+          <p>AI-generated insights, metric tracking, anomaly detection, and personalized summaries.</p>
+          <a href="https://www.youtube.com/watch?v=Cnbdkye0X_8" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>8. Tableau Pulse Powered by Tableau AI</h3>
+          <p>How Tableau AI surfaces key insights and the "why" behind your data.</p>
+          <a href="https://www.youtube.com/watch?v=oLysN4HI8hs" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>9. Microsoft Power BI — Official Channel</h3>
+          <p>Monthly updates, how-tos, conference recordings. Subscribe for latest features.</p>
+          <a href="https://www.youtube.com/@MicrosoftPowerBI" target="_blank" rel="noopener" class="video-link">Subscribe on YouTube →</a>
+        </div>
+        <div class="card video-card">
+          <h3>10. Kevin Stratvert — Power BI Tutorials</h3>
+          <p>Beginner-friendly tutorials; Copilot, dashboards, and best practices for MBAs.</p>
+          <a href="https://www.youtube.com/kevinstratvert" target="_blank" rel="noopener" class="video-link">Subscribe on YouTube →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-section">
+    <div class="container">
+      <h2 class="section-title">AI in Power BI & Tableau</h2>
+      <p class="section-subtitle">Copilot, Einstein, and AI-driven analytics — 2025–2026 state of the art</p>
+
+      <div class="ai-subsection">
+        <h3 class="ai-subtitle">Power BI Copilot & AI (15 resources)</h3>
+        <div class="video-grid">
+          <div class="card video-card">
+            <h4>Copilot for Power BI — Overview</h4>
+            <p>Chat with data, DAX generation, Q&amp;A, report creation. Microsoft Learn official.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-introduction" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Copilot Get Started Tutorial</h4>
+            <p>Step-by-step: from blank page to full dashboard using natural language.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/tutorial-copilot-power-bi-get-started" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Prepare Semantic Model for AI</h4>
+            <p>Best practices: descriptions, naming, star schema for better Copilot results.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/tutorial-copilot-power-bi-prepare-model" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>DAX Query View with Copilot</h4>
+            <p>Write DAX with natural language. SHOW ME, EVALUATE, measure creation.</p>
+            <a href="https://www.youtube.com/watch?v=elHN9hTtfNE" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Power BI February 2026 Feature Summary</h4>
+            <p>Smarter Copilot, conversational apps, app summaries, expanded prompts.</p>
+            <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-february-2026-feature-summary/" target="_blank" rel="noopener" class="video-link">Read blog →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Q&amp;A Enhancements with Copilot</h4>
+            <p>Synonym suggestions, natural language understanding improvements.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/natural-language/q-and-a-copilot-enhancements" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Enable Fabric Copilot for Power BI</h4>
+            <p>Admin setup, capacity requirements, governance.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-enable-power-bi" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Power BI November 2025 — Copilot in Mobile</h4>
+            <p>Copilot improvements, Mobile app, DAX Query, Modeling MCP server.</p>
+            <a href="https://www.youtube.com/watch?v=pRFeQWzUhn0" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+          </div>
+          <div class="card video-card">
+            <h4>From Blank Page to Dashboard — Copilot</h4>
+            <p>Pragmatic Works: build sales performance dashboard in minutes with AI.</p>
+            <a href="https://pragmaticworks.com/blog/power-bi-copilot-tutorial-2025-from-blank-page-to-full-dashboard-in-minutes" target="_blank" rel="noopener" class="video-link">Read tutorial →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Microsoft Fabric Copilot — DAX Update</h4>
+            <p>Fabric Copilot for DAX queries, EVALUATE, measures from natural language.</p>
+            <a href="https://powerbi.microsoft.com/en-us/blog/microsoft-fabric-copilot-to-write-dax-queries-in-power-bi-update" target="_blank" rel="noopener" class="video-link">Read blog →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Power BI Chat with Data</h4>
+            <p>Standalone Copilot, report panes, ad-hoc analyses, up to 10K character prompts.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-introduction" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Copilot Data Model Suggestions</h4>
+            <p>Relationships, summarization, optimizations from AI.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-introduction" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Power BI March 2026 Update</h4>
+            <p>Translytical task flows, Direct Lake, custom totals, DAX UDFs.</p>
+            <a href="https://aka.ms/PBI_Carousel_March2026MonthlyUpdate" target="_blank" rel="noopener" class="video-link">View update →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Kevin Stratvert — Copilot Solves #1 Problem</h4>
+            <p>Beginners: how Copilot suggests visualizations, reduces design time.</p>
+            <a href="https://www.youtube.com/kevinstratvert" target="_blank" rel="noopener" class="video-link">Channel →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Power BI Premium — Copilot Requirements</h4>
+            <p>F64+/P1+ capacity, regional availability, sovereign cloud notes.</p>
+            <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-enable-power-bi" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-subsection">
+        <h3 class="ai-subtitle">Tableau AI — Einstein, Agent & Pulse (15 resources)</h3>
+        <div class="video-grid">
+          <div class="card video-card">
+            <h4>Tableau Agent 2026 Launch</h4>
+            <p>Multilingual AI, conversational data exploration, 40% faster analysis.</p>
+            <a href="https://help.tableau.com/current/pro/desktop/en-us/desktop_einstein.htm" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Einstein Copilot for Tableau Demo</h4>
+            <p>Official demo: natural language viz creation, filtering, calculated fields.</p>
+            <a href="https://www.tableau.com/watch/einstein-copilot-for-tableau-demo" target="_blank" rel="noopener" class="video-link">Watch demo →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau Pulse Demo</h4>
+            <p>AI-powered metric tracking, anomaly detection, Slack digests.</p>
+            <a href="https://www.youtube.com/watch?v=Cnbdkye0X_8" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau Pulse — AI Summaries</h4>
+            <p>Key metric changes, generative AI insights, suggested questions.</p>
+            <a href="https://www.youtube.com/watch?v=oLysN4HI8hs" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Build Views with Tableau Agent</h4>
+            <p>Natural language viz creation, time series, calculations, filter/sort.</p>
+            <a href="https://help.tableau.com/current/pro/desktop/en-us/desktop_einstein.htm" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau Agent FAQ</h4>
+            <p>Availability, Tableau+ subscription, request limits, Dashboard Narratives Beta.</p>
+            <a href="https://help.tableau.com/current/online/en-us/web_author_einstein_faq.htm" target="_blank" rel="noopener" class="video-link">Read FAQ →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau Agent — Tableau Cloud</h4>
+            <p>Web authoring, Einstein Copilot for Tableau Cloud (2024.2+).</p>
+            <a href="https://www.tableautim.com/playlist-video/tableau-agents-einstein-copilot-for-web-authoring-in-tableau-cloud-new-in-tableau-24-2" target="_blank" rel="noopener" class="video-link">Watch →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau AI — Building Future</h4>
+            <p>Salesforce blog: AI-driven analytics, Tableau Agent vision.</p>
+            <a href="https://www.tableau.com/blog/einstein-copilot-for-tableau-building-ai-driven-analytics" target="_blank" rel="noopener" class="video-link">Read blog →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Einstein Trust Layer</h4>
+            <p>Data security: customer data not saved to LLM or used for training.</p>
+            <a href="https://help.tableau.com/current/pro/desktop/en-us/desktop_einstein.htm" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau+ Subscription</h4>
+            <p>Tableau Agent exclusive to Tableau+, $70/user/month, Desktop/Cloud/Server.</p>
+            <a href="https://www.tableau.com/products/tableau-agent" target="_blank" rel="noopener" class="video-link">Product page →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Ask Data — Natural Language</h4>
+            <p>Describe what you want; Tableau Agent generates viz and refines.</p>
+            <a href="https://help.tableau.com/current/pro/desktop/en-us/desktop_einstein.htm" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Explain Data</h4>
+            <p>Select data point; ask "Why is this high/low?" — statistical explanations.</p>
+            <a href="https://www.tableau.com/products/tableau-agent" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Dashboard Narratives (Beta Feb 2026)</h4>
+            <p>AI-generated summaries of dashboard insights.</p>
+            <a href="https://help.tableau.com/current/online/en-us/web_author_einstein_faq.htm" target="_blank" rel="noopener" class="video-link">Learn more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau Agent — BigQuery & Gemini</h4>
+            <p>Salesforce-Google Cloud: real-time queries, pattern detection, Gemini models.</p>
+            <a href="https://orbitarai.com/ai-tools/analytics/business-intelligence/tableau/" target="_blank" rel="noopener" class="video-link">Read more →</a>
+          </div>
+          <div class="card video-card">
+            <h4>Tableau 2025.2 — Pulse Updates</h4>
+            <p>Dynamic color ranges, spatial parameters, cloud features.</p>
+            <a href="https://www.youtube.com/watch?v=4EZw48uW6h0" target="_blank" rel="noopener" class="video-link">Watch on YouTube →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-assistant">
+    <div class="container">
+      <h2 class="section-title">Anthropic AI Assistant</h2>
+      <p class="section-subtitle">Ask questions about Power BI, Tableau, DAX, or BI concepts. Powered by Claude.</p>
+      <div class="card">
+        <div id="aiChatContainer">
+          <div id="aiMessages" class="ai-messages"></div>
+          <div class="ai-input-row">
+            <textarea id="aiInput" class="ai-input" rows="2" placeholder="Ask about Power BI, DAX, Tableau, dashboards..."></textarea>
+            <button type="button" id="aiSend" class="ai-send-btn">Send</button>
+          </div>
+          <p class="ai-note">Responses are AI-generated. Verify critical information from official documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="container">
       <h2 class="section-title">Resources & Links</h2>
@@ -2505,6 +2817,43 @@
       var waFloat = document.getElementById('whatsappFloat');
       if (waBtn) waBtn.href = waUrl;
       if (waFloat) waFloat.href = waUrl;
+
+      // AI Assistant
+      var aiMessages = document.getElementById('aiMessages');
+      var aiInput = document.getElementById('aiInput');
+      var aiSend = document.getElementById('aiSend');
+      if (aiMessages && aiInput && aiSend) {
+        var aiHistory = [];
+        aiSend.addEventListener('click', function() { sendAiMessage(); });
+        aiInput.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAiMessage(); } });
+        function addMsg(role, text) {
+          var div = document.createElement('div');
+          div.className = 'ai-msg ' + role;
+          div.innerHTML = (role === 'assistant' ? '<div class="label">Claude</div>' : '') + '<div class="text">' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>';
+          aiMessages.appendChild(div);
+          aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+        function sendAiMessage() {
+          var msg = aiInput.value.trim();
+          if (!msg) return;
+          aiInput.value = '';
+          aiSend.disabled = true;
+          addMsg('user', msg);
+          aiHistory.push({ role: 'user', content: msg });
+          var apiUrl = (window.location.origin || '') + '/.netlify/functions/ai-chat';
+          fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: aiHistory })
+          }).then(function(r) { return r.json(); }).then(function(data) {
+            var reply = data.reply || data.error || 'Sorry, I could not get a response.';
+            addMsg('assistant', reply);
+            aiHistory.push({ role: 'assistant', content: reply });
+          }).catch(function() {
+            addMsg('assistant', 'Connection error. Ensure ANTHROPIC_API_KEY is set in Netlify environment variables.');
+          }).finally(function() { aiSend.disabled = false; });
+        }
+      }
     });
 
     Chart.defaults.color = '#8b98a5';
