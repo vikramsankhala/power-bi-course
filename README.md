@@ -31,6 +31,12 @@ A detailed web application built from the **Vikram Power BI Course Outline** doc
 
 4. **Copy the Web app URL** and in `index.html` replace `YOUR_GOOGLE_APPS_SCRIPT_URL` with it.
 
+## Setup: Anthropic AI Assistant
+
+1. Netlify Dashboard → Site → **Site configuration** → **Environment variables**
+2. Add `ANTHROPIC_API_KEY` with your Anthropic API key
+3. Redeploy. See `AI-ASSISTANT-SETUP.md` for details.
+
 ## Setup: WhatsApp
 
 In `index.html`, replace `1234567890` in `WHATSAPP_NUMBER` with your WhatsApp number (country code + number, no + or spaces). Example: `919876543210` for India.
